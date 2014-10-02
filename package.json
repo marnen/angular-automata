@@ -1,0 +1,14 @@
+{
+  "name": "angular-automata",
+  "version": "0.0.1",
+  "homepage": "http://github.com/marnen/angular-automata",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/marnen/angular-automata.git"
+  },
+  "devDependencies": {
+    "bower": "^1.3.12",
+    "generator-angular": "^0.9.8"
+  }
+}

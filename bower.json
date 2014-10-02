@@ -1,0 +1,17 @@
+{
+  "name": "angular-automata",
+  "version": "0.0.1",
+  "homepage": "https://github.com/marnen/angular-automata",
+  "authors": [
+    "Marnen Laibow-Koser <marnen@marnen.org>"
+  ],
+  "description": "Cellular automaton explorer, written with AngularJS",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
