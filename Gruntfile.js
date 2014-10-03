@@ -413,7 +413,10 @@ module.exports = function (grunt) {
       features: {
         options: {
           configFile: "protractor.conf.js",
-          args: {}
+          args: {
+            specs: ['test/features/**/*.feature'],
+            browser: 'phantomjs'
+          }
         }
       }
     }
