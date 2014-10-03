@@ -413,6 +413,7 @@ module.exports = function (grunt) {
       features: {
         options: {
           configFile: "protractor.conf.js",
+          framework: 'cucumber',
           args: {
             specs: ['test/features/**/*.feature'],
             browser: 'phantomjs'
