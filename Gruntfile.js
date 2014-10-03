@@ -401,6 +401,21 @@ module.exports = function (grunt) {
         configFile: 'test/karma.conf.coffee',
         singleRun: true
       }
+    },
+
+    protractor: {
+      options: {
+        configFile: "node_modules/protractor/docs/referenceConf.js",
+        keepAlive: false,
+        noColor: false,
+        args: {}
+      },
+      features: {
+        options: {
+          configFile: "protractor.conf.js",
+          args: {}
+        }
+      }
     }
   });
 
