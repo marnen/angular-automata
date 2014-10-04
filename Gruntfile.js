@@ -45,6 +45,10 @@ module.exports = function (grunt) {
         files: ['<%= yeoman.app %>/styles/{,*/}*.{scss,sass}'],
         tasks: ['compass:server', 'autoprefixer']
       },
+      features: {
+        files: ['test/features/**/*'],
+        tasks: ['protractor:features']
+      },
       gruntfile: {
         files: ['Gruntfile.js']
       },
@@ -400,6 +404,25 @@ module.exports = function (grunt) {
       unit: {
         configFile: 'test/karma.conf.coffee',
         singleRun: true
+      }
+    },
+
+    protractor: {
+      options: {
+        configFile: "node_modules/protractor/docs/referenceConf.js",
+        keepAlive: false,
+        noColor: false,
+        args: {}
+      },
+      features: {
+        options: {
+          configFile: "protractor.conf.js",
+          args: {
+            framework: 'cucumber',
+            specs: ['test/features/**/*.feature'],
+            browser: 'phantomjs'
+          }
+        }
       }
     }
   });
