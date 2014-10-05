@@ -402,7 +402,14 @@ module.exports = function (grunt) {
     // Test settings
     karma: {
       unit: {
-        configFile: 'test/karma.conf.coffee',
+        configFile: 'karma.conf.coffee',
+        files: [
+          {pattern: 'bower_components/angular/angular.js', watched: false},
+          {pattern: 'bower_components/angular-route/angular-route.js', watched: false},
+          {pattern: 'bower_components/angular-mocks/angular-mocks.js', watched: false},
+          {pattern: 'app/scripts/**/*.{js,coffee}'},
+          {pattern: 'test/spec/**/*{_s,S}pec.{js,coffee}'}
+        ],
         singleRun: true
       }
     },
