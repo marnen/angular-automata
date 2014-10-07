@@ -1,9 +1,6 @@
-angular.module('automata').controller 'AutomatonController', ['$scope', ($scope) ->
+angular.module('automata').controller 'AutomatonController', ['$scope', 'OneDimensionalAutomaton', ($scope, OneDimensionalAutomaton) ->
   ((->
-    @compute = (automaton) ->
-      ('0' for i in [1..automaton.seed.length]).join('')
-
     @update = =>
-      @output = @compute(@automaton)
+      @output = new OneDimensionalAutomaton(@automaton).compute()
   ).bind $scope)()
 ]

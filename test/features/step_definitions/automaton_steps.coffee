@@ -12,4 +12,4 @@ module.exports = ->
   @Then /^I should see "([^"]*)" in the output$/, (output, next) ->
     $('#canvas .output').getText().then (text) ->
       expect(text).to.equal output
-    next()
+      next()

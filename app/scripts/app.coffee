@@ -16,6 +16,7 @@ angular
     'ngRoute',
     # 'ngSanitize',
     # 'ngTouch'
+    'models'
   ])
   .config ($routeProvider) ->
     $routeProvider
