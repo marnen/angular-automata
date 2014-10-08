@@ -4,23 +4,36 @@ angular.module('models').factory 'OneDimensionalAutomaton', ->
       seed = params.seed.split ''
       rule = params.rule
 
+      binary = (numberOrString) ->
+        parseInt(numberOrString).toString 2
+
+      binaryArray = (numberOrString, length) ->
+        pad(binary(numberOrString), length).split ''
+
+      computeBit = (index) ->
+        left = if index == 0 then '0' else seed[index - 1]
+        center = seed[index]
+        right = seed[index + 1] || '0'
+        triplet = [left, center, right]
+        ruleBits()[triplet]
+
       pad = (string, minLength) ->
         if string.length >= minLength
           string
         else
           pad "0#{string}", minLength
 
-      @compute = ->
-        ruleBits = {}
-        result = []
-        for bit, index in pad(parseInt(params.rule).toString('2'), 8).split('').reverse()
-          ruleBits[pad(index.toString('2'), 3).split('')] = bit
+      ruleBits = ->
+        result = {}
+        for bit, index in binaryArray(rule, 8).reverse()
+          result[binaryArray(index, 3)] = bit
+        result
 
-        for center, index in seed
-          left = if index == 0 then '0' else seed[index - 1]
-          right = seed[index + 1] || '0'
-          triplet = [left, center, right]
-          result.push ruleBits[triplet]
+      @compute = ->
+        result = []
+
+        for _, index in seed
+          result.push computeBit(index)
 
         result.join ''
 
