@@ -428,7 +428,8 @@ module.exports = function (grunt) {
           args: {
             framework: 'cucumber',
             specs: ['test/features/**/*.feature'],
-            browser: 'phantomjs'
+            // browser: 'phantomjs'
+            browser: 'chrome'
           }
         }
       }
