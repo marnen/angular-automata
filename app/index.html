@@ -27,8 +27,8 @@
         <form>
           <label>
             Rule:
-            <select name='rule'>
-              <option value='0'>0</option>
+            <select name='rule' ng-model='automaton.rule'>
+              <option ng-repeat='rule in rules' ng-value='rule'>{{rule}}</option>
             </select>
           </label>
           <input type='text' name='seed' ng-model='automaton.seed'>

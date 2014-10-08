@@ -2,7 +2,7 @@ module.exports = ->
   expect = @World.prototype.expect
 
   @When /^I select rule (\d+)$/, (rule, next) ->
-    $('select[name=rule]').element(`by`.cssContainingText 'option', rule).click()
+    $('select[name=rule]').element(`by`.xpath "//option[text()='#{rule}']").click()
     next()
 
   @When /^I enter "([^"]*)" as the seed$/, (seed, next) ->

@@ -7,9 +7,21 @@ describe 'OneDimensionalAutomaton', ->
     OneDimensionalAutomaton = $injector.get 'OneDimensionalAutomaton'
 
   describe '#compute', ->
-    it 'returns as many 0s as there are characters in the seed string', ->
-      length = Math.floor(Math.random() * 10) + 1
-      seed = (Math.floor(Math.random() * 10) for i in [1..length]).join('')
-      automaton = new OneDimensionalAutomaton {seed: seed}
+    describe 'computing one generation for the given seed and rule', ->
+      specify = it
 
-      expect(automaton.compute()).toEqual ('0' for i in [1..length]).join('')
+      afterEach ->
+        automaton = new OneDimensionalAutomaton @params
+        expect(automaton.compute()).toEqual @result
+
+      specify 'rule 0', ->
+        @params = seed: '10101', rule: '0'
+        @result = '00000'
+
+      specify 'rule 255', ->
+        @params = seed: '01010', rule: '255'
+        @result = '11111'
+
+  describe '.rules', ->
+    it 'returns the permissible range of rule codes', ->
+      expect(OneDimensionalAutomaton.rules()).toEqual [0..255]
