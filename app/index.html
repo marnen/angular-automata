@@ -35,7 +35,7 @@
           <button ng-click='update()'>Go!</button>
         </form>
         <div class='output'>
-          {{output}}
+          <span class='cell' ng-repeat='cell in output.split("") track by $index' data-value='{{cell}}'></div>
         </div>
       </section>
     </div>
