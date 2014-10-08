@@ -30,12 +30,7 @@ angular.module('models').factory 'OneDimensionalAutomaton', ->
         result
 
       @compute = ->
-        result = []
-
-        for _, index in seed
-          result.push computeBit(index)
-
-        result.join ''
+        (computeBit(index) for _, index in seed).join ''
 
     ruleMin = 0
     ruleMax = 255
