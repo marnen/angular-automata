@@ -15,12 +15,23 @@ $cell_border: black;
   }
 
   .output {
+    .row {
+      margin: 0px;
+      clear: left;
+
+      &::before, &::after {
+        content: none;
+        display: none;
+      }
+    }
+
     .cell {
       display: inline-block;
       border: 1px solid $cell_border;
       margin: 0px;
       width: 3px;
       height: 3px;
+      float: left;
 
       &[data-value='0'] {
         background-color: $cell_0;

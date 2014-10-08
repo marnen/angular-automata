@@ -10,6 +10,6 @@ Feature: 1-dimensional automaton
     Then I should see "<output>" in the output
 
     Examples:
-      | rule | output |
-      | 0    | 000000 |
-      | 255  | 111111 |
+      | rule | output        |
+      | 0    | 010101,000000 |
+      | 255  | 010101,111111 |

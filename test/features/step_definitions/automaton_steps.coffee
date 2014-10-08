@@ -10,7 +10,9 @@ module.exports = ->
     next()
 
   @Then /^I should see "([^"]*)" in the output$/, (output, next) ->
-    selector = (".cell[data-value='#{char}']" for char in output.split('')).join ' + '
-    $('#canvas .output').all(`by`.css selector).then (cells) ->
-      expect(cells).not.to.be.empty
+    rowData = output.split ','
+    selectors = (((".cell[data-value='#{char}']" for char in row.split('')).join ' + ') for row in rowData)
+
+    element.all(`by`.css '#canvas .output .row').then (rows) ->
+      expect(row.$ selectors[index]).not.to.be.empty for row, index in rows
       next()
