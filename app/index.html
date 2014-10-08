@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
   </head>
-  <body ng-app="angularAutomataApp">
+  <body>
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
@@ -23,9 +23,19 @@
     <div id="main">
       <h1>Angular Automata</h1>
       <p>A cellular automaton explorer</p>
-      <section id="canvas">
-        <div>
-          Some placeholder text.
+      <section id="canvas" ng-app='automata' ng-controller='AutomatonController'>
+        <form>
+          <label>
+            Rule:
+            <select name='rule' ng-model='automaton.rule'>
+              <option ng-repeat='rule in rules' ng-value='rule'>{{rule}}</option>
+            </select>
+          </label>
+          <input type='text' name='seed' ng-model='automaton.seed'>
+          <button ng-click='update()'>Go!</button>
+        </form>
+        <div class='output'>
+          {{output}}
         </div>
       </section>
     </div>
@@ -65,8 +75,10 @@
     <!-- endbuild -->
 
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
+        <script src="scripts/models/module.js"></script>
+        <script src="scripts/models/one_dimensional_automaton.js"></script>
         <script src="scripts/app.js"></script>
-        <script src="scripts/controllers/main.js"></script>
+        <script src="scripts/controllers/automaton_controller.js"></script>
         <!-- endbuild -->
 </body>
 </html>

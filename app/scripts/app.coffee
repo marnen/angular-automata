@@ -2,20 +2,21 @@
 
 ###*
  # @ngdoc overview
- # @name angularAutomataApp
+ # @name automata
  # @description
- # # angularAutomataApp
+ # # automata
  #
  # Main module of the application.
 ###
 angular
-  .module('angularAutomataApp', [
-    'ngAnimate',
-    'ngCookies',
-    'ngResource',
+  .module('automata', [
+    # 'ngAnimate',
+    # 'ngCookies',
+    # 'ngResource',
     'ngRoute',
-    'ngSanitize',
-    'ngTouch'
+    # 'ngSanitize',
+    # 'ngTouch'
+    'models'
   ])
   .config ($routeProvider) ->
     $routeProvider
