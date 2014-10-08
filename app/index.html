@@ -31,7 +31,10 @@
               <option ng-repeat='rule in rules' ng-value='rule'>{{rule}}</option>
             </select>
           </label>
-          <input type='text' name='seed' ng-model='automaton.seed'>
+          <label>
+            Seed:
+            <input type='text' name='seed' ng-model='automaton.seed'>
+          </label>
           <button ng-click='update()'>Go!</button>
         </form>
         <div class='output'>
