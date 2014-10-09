@@ -35,10 +35,10 @@
             Seed:
             <input type='text' name='seed' data-ng-model='automaton.seed'>
           </label>
-          <div class='rule-demo'>
+          <div class='rule-preview'>
             <div class='case' data-ng-repeat='case in [7, 6, 5, 4, 3, 2, 1, 0]'>
               <div class='row' data-ng-bind-html='case.toString(2) | pad:3 | cells'></div>
-              <div class='row' data-ng-bind-html='automaton.rule ? (parseInt(automaton.rule, 10).toString(2).split("").reverse()[case] || "0") : "" | cells'></div>
+              <div class='row result' data-bit='{{case}}' data-ng-bind-html='automaton.rule ? (parseInt(automaton.rule, 10).toString(2).split("").reverse()[case] || "0") : "" | cells'></div>
             </div>
           </div>
           <button ng-click='update()'>Go!</button>

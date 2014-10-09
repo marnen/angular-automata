@@ -51,12 +51,16 @@ button {
     @extend .body;
   }
 
-  .output, .rule-demo {
+  .output, .rule-preview {
     @extend %cell-display;
   }
 
-  .rule-demo .case {
+  .rule-preview .case {
     float: left;
     padding: 5px;
+
+    .result {
+      margin-left: 5px;
+    }
   }
 }
