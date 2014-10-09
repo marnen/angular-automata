@@ -19,7 +19,6 @@ describe 'cells', ->
         input = Math.floor(Math.random() * 10 ** 10).toString()
 
       it 'creates a <span> of class "cell" for each character in the input string', ->
-        console.log unwrap cells(input)
         expect(unwrap(cells(input)).match(/<span\b[^>]*class=(['"])cell\1/g).length).toEqual input.length
 
       it "puts the original input character in the <span>'s data-value attribute", ->
