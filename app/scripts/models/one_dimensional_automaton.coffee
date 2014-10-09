@@ -5,7 +5,7 @@ angular.module('models', ['filters']).factory 'OneDimensionalAutomaton', ['$filt
       rule = params.rule
 
       binary = (numberOrString) ->
-        parseInt(numberOrString).toString 2
+        parseInt(numberOrString, 10).toString 2
 
       binaryArray = (numberOrString, length) ->
         ($filter('pad'))(binary(numberOrString), length).split ''
