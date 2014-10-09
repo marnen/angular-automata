@@ -10,6 +10,20 @@ module.exports = ->
     next()
 
   @Then /^I should see "([^"]*)" in the output$/, (output, next) ->
-    $('#canvas .output').getText().then (text) ->
-      expect(text).to.equal output
+    rowData = output.split ','
+    selectors = (((".cell[data-value='#{char}']" for char in row.split('')).join ' + ') for row in rowData)
+
+    element.all(`by`.css '#canvas .output .row').map((row, index) ->
+      row.all(`by`.css selectors[index]).count().then (count) ->
+        expect(count).not.to.equal 0
+    ).then ->
+      next()
+
+  @Then /^I should see a graphical preview of rule (.*)$/, (rule, next) ->
+    bitArray = parseInt(rule, 10).toString(2).split('').reverse()
+    selectors = (".row.result[data-bit='#{bit}'] span.cell[data-value='#{bitArray[bit] || 0}']" for bit in [7..0])
+    element.all(`by`.css '.rule-preview .case').map((caseDiv, index) ->
+      caseDiv.all(`by`.css selectors[index]).count().then (count) ->
+        expect(count).not.to.equal 0
+    ).then ->
       next()

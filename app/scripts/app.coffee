@@ -13,16 +13,17 @@ angular
     # 'ngAnimate',
     # 'ngCookies',
     # 'ngResource',
-    'ngRoute',
-    # 'ngSanitize',
+    # 'ngRoute',
+    'ngSanitize',
     # 'ngTouch'
+    'filters',
     'models'
   ])
-  .config ($routeProvider) ->
-    $routeProvider
-      .when '/',
-        templateUrl: 'views/main.html'
-        controller: 'MainCtrl'
-      .otherwise
-        redirectTo: '/'
+  # .config ($routeProvider) ->
+  #   $routeProvider
+  #     .when '/',
+  #       templateUrl: 'views/main.html'
+  #       controller: 'MainCtrl'
+  #     .otherwise
+  #       redirectTo: '/'
 

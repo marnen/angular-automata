@@ -1,5 +1,46 @@
 @import 'base';
 
+$cell_0: white;
+$cell_1: #333333;
+$cell_border: black;
+
+%cell-display {
+  .row {
+    margin: 0px;
+    clear: left;
+
+    &::before, &::after {
+      content: none;
+      display: none;
+    }
+  }
+
+  .cell {
+    display: inline-block;
+    border: 1px solid $cell_border;
+    margin: 0px;
+    width: 3px;
+    height: 3px;
+    float: left;
+
+    &[data-value='0'] {
+      background-color: $cell_0;
+    }
+
+    &[data-value='1'] {
+      background-color: $cell_1;
+    }
+
+    &:not([data-value]) {
+      border: none;
+    }
+  }
+}
+
+button {
+  float: none;
+}
+
 #canvas {
   @extend .cell;
   @extend .panel;
@@ -8,5 +49,18 @@
 
   & > div {
     @extend .body;
+  }
+
+  .output, .rule-preview {
+    @extend %cell-display;
+  }
+
+  .rule-preview .case {
+    float: left;
+    padding: 5px;
+
+    .result {
+      margin-left: 5px;
+    }
   }
 }

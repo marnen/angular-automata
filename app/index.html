@@ -23,19 +23,28 @@
     <div id="main">
       <h1>Angular Automata</h1>
       <p>A cellular automaton explorer</p>
-      <section id="canvas" ng-app='automata' ng-controller='AutomatonController'>
+      <section id="canvas" data-ng-app='automata' data-ng-controller='AutomatonController'>
         <form>
           <label>
             Rule:
-            <select name='rule' ng-model='automaton.rule'>
-              <option ng-repeat='rule in rules' ng-value='rule'>{{rule}}</option>
+            <select name='rule' data-ng-model='automaton.rule'>
+              <option data-ng-repeat='rule in rules' data-ng-value='rule'>{{rule}}</option>
             </select>
           </label>
-          <input type='text' name='seed' ng-model='automaton.seed'>
+          <label>
+            Seed:
+            <input type='text' name='seed' data-ng-model='automaton.seed'>
+          </label>
+          <div class='rule-preview'>
+            <div class='case' data-ng-repeat='case in [7, 6, 5, 4, 3, 2, 1, 0]'>
+              <div class='row' data-ng-bind-html='case.toString(2) | pad:3 | cells'></div>
+              <div class='row result' data-bit='{{case}}' data-ng-bind-html='automaton.rule ? (parseInt(automaton.rule, 10).toString(2).split("").reverse()[case] || "0") : "" | cells'></div>
+            </div>
+          </div>
           <button ng-click='update()'>Go!</button>
         </form>
         <div class='output'>
-          {{output}}
+          <div class='row' data-ng-repeat='row in [automaton.seed, output] track by $index' data-ng-bind-html='row | cells' />
         </div>
       </section>
     </div>
@@ -75,6 +84,9 @@
     <!-- endbuild -->
 
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
+        <script src="scripts/filters/_module.js"></script>
+        <script src="scripts/filters/cells.js"></script>
+        <script src="scripts/filters/pad.js"></script>
         <script src="scripts/models/module.js"></script>
         <script src="scripts/models/one_dimensional_automaton.js"></script>
         <script src="scripts/app.js"></script>
