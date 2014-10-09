@@ -31,16 +31,16 @@
               <option data-ng-repeat='rule in rules' data-ng-value='rule'>{{rule}}</option>
             </select>
           </label>
+          <label>
+            Seed:
+            <input type='text' name='seed' data-ng-model='automaton.seed'>
+          </label>
           <div class='rule-demo'>
             <div class='case' data-ng-repeat='case in [7, 6, 5, 4, 3, 2, 1, 0]'>
               <div class='row' data-ng-bind-html='case.toString(2) | pad:3 | cells'></div>
               <div class='row' data-ng-bind-html='automaton.rule ? (parseInt(automaton.rule, 10).toString(2).split("").reverse()[case] || "0") : "" | cells'></div>
             </div>
           </div>
-          <label>
-            Seed:
-            <input type='text' name='seed' data-ng-model='automaton.seed'>
-          </label>
           <button ng-click='update()'>Go!</button>
         </form>
         <div class='output'>

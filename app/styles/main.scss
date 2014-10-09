@@ -37,6 +37,10 @@ $cell_border: black;
   }
 }
 
+button {
+  float: none;
+}
+
 #canvas {
   @extend .cell;
   @extend .panel;
