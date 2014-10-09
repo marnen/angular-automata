@@ -35,6 +35,10 @@
             Seed:
             <input type='text' name='seed' data-ng-model='automaton.seed'>
           </label>
+          <label>
+            Generations:
+            <input type='text' name='generations' data-ng-model='generations'>
+          </label>
           <div class='rule-preview'>
             <div class='case' data-ng-repeat='case in [7, 6, 5, 4, 3, 2, 1, 0]'>
               <div class='row' data-ng-bind-html='case.toString(2) | pad:3 | cells'></div>
@@ -44,7 +48,8 @@
           <button ng-click='update()'>Go!</button>
         </form>
         <div class='output'>
-          <div class='row' data-ng-repeat='row in [automaton.seed, output] track by $index' data-ng-bind-html='row | cells' />
+          <div class='row' data-ng-bind-html='automaton.seed | cells'></div>
+          <div class='row' data-ng-repeat='row in output track by $index' data-ng-bind-html='row | cells'></div>
         </div>
       </section>
     </div>

@@ -4,6 +4,6 @@ angular.module('automata').controller 'AutomatonController', ['$scope', 'OneDime
     @rules = OneDimensionalAutomaton.rules()
 
     @update = =>
-      @output = new OneDimensionalAutomaton(@automaton).compute()
+      @output = new OneDimensionalAutomaton(@automaton).compute @generations
   ).bind $scope
 ]
