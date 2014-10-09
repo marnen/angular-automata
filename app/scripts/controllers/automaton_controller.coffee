@@ -1,5 +1,6 @@
 angular.module('automata').controller 'AutomatonController', ['$scope', 'OneDimensionalAutomaton', ($scope, OneDimensionalAutomaton) ->
   do (->
+    @parseInt = parseInt
     @rules = OneDimensionalAutomaton.rules()
 
     @update = =>

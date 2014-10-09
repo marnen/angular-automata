@@ -4,6 +4,39 @@ $cell_0: white;
 $cell_1: #333333;
 $cell_border: black;
 
+%cell-display {
+  .row {
+    margin: 0px;
+    clear: left;
+
+    &::before, &::after {
+      content: none;
+      display: none;
+    }
+  }
+
+  .cell {
+    display: inline-block;
+    border: 1px solid $cell_border;
+    margin: 0px;
+    width: 3px;
+    height: 3px;
+    float: left;
+
+    &[data-value='0'] {
+      background-color: $cell_0;
+    }
+
+    &[data-value='1'] {
+      background-color: $cell_1;
+    }
+
+    &:not([data-value]) {
+      border: none;
+    }
+  }
+}
+
 #canvas {
   @extend .cell;
   @extend .panel;
@@ -14,32 +47,12 @@ $cell_border: black;
     @extend .body;
   }
 
-  .output {
-    .row {
-      margin: 0px;
-      clear: left;
+  .output, .rule-demo {
+    @extend %cell-display;
+  }
 
-      &::before, &::after {
-        content: none;
-        display: none;
-      }
-    }
-
-    .cell {
-      display: inline-block;
-      border: 1px solid $cell_border;
-      margin: 0px;
-      width: 3px;
-      height: 3px;
-      float: left;
-
-      &[data-value='0'] {
-        background-color: $cell_0;
-      }
-
-      &[data-value='1'] {
-        background-color: $cell_1;
-      }
-    }
+  .rule-demo .case {
+    float: left;
+    padding: 5px;
   }
 }

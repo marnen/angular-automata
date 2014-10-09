@@ -1,4 +1,4 @@
-angular.module('models').factory 'OneDimensionalAutomaton', ->
+angular.module('models', ['filters']).factory 'OneDimensionalAutomaton', ['$filter', ($filter) ->
   class OneDimensionalAutomaton
     constructor: (params) ->
       seed = params.seed.split ''
@@ -8,7 +8,7 @@ angular.module('models').factory 'OneDimensionalAutomaton', ->
         parseInt(numberOrString).toString 2
 
       binaryArray = (numberOrString, length) ->
-        pad(binary(numberOrString), length).split ''
+        ($filter('pad'))(binary(numberOrString), length).split ''
 
       computeBit = (index) ->
         left = if index == 0 then '0' else seed[index - 1]
@@ -16,12 +16,6 @@ angular.module('models').factory 'OneDimensionalAutomaton', ->
         right = seed[index + 1] || '0'
         triplet = [left, center, right]
         ruleBits()[triplet]
-
-      pad = (string, minLength) ->
-        if string.length >= minLength
-          string
-        else
-          pad "0#{string}", minLength
 
       ruleBits = ->
         result = {}
@@ -37,3 +31,4 @@ angular.module('models').factory 'OneDimensionalAutomaton', ->
 
     @rules: ->
       [ruleMin..ruleMax]
+]
