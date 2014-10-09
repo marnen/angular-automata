@@ -23,24 +23,22 @@
     <div id="main">
       <h1>Angular Automata</h1>
       <p>A cellular automaton explorer</p>
-      <section id="canvas" ng-app='automata' ng-controller='AutomatonController'>
+      <section id="canvas" data-ng-app='automata' data-ng-controller='AutomatonController'>
         <form>
           <label>
             Rule:
-            <select name='rule' ng-model='automaton.rule'>
-              <option ng-repeat='rule in rules' ng-value='rule'>{{rule}}</option>
+            <select name='rule' data-ng-model='automaton.rule'>
+              <option data-ng-repeat='rule in rules' data-ng-value='rule'>{{rule}}</option>
             </select>
           </label>
           <label>
             Seed:
-            <input type='text' name='seed' ng-model='automaton.seed'>
+            <input type='text' name='seed' data-ng-model='automaton.seed'>
           </label>
           <button ng-click='update()'>Go!</button>
         </form>
         <div class='output'>
-          <div class='row' ng-repeat='row in [automaton.seed, output] track by $index'>
-            <span class='cell' ng-repeat='cell in row.split("") track by $index' data-value='{{cell}}'></span>
-          </div>
+          <div class='row' data-ng-repeat='row in [automaton.seed, output] track by $index' data-ng-bind-html='row | cells' />
         </div>
       </section>
     </div>
@@ -80,6 +78,8 @@
     <!-- endbuild -->
 
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
+        <script src="scripts/filters/_module.js"></script>
+        <script src="scripts/filters/cells.js"></script>
         <script src="scripts/models/module.js"></script>
         <script src="scripts/models/one_dimensional_automaton.js"></script>
         <script src="scripts/app.js"></script>
