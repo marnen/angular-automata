@@ -9,6 +9,10 @@ module.exports = ->
     $('input[name=seed]').sendKeys seed
     next()
 
+  @When /^I enter (\d+) generations$/, (generations, next) ->
+    $('input[name=generations]').sendKeys generations
+    next()
+
   @Then /^I should see "([^"]*)" in the output$/, (output, next) ->
     rowData = output.split ','
     selectors = (((".cell[data-value='#{char}']" for char in row.split('')).join ' + ') for row in rowData)
